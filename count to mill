@@ -1,0 +1,71 @@
+units_and_teen = ['', 'ONE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT', 'NINE', 'TEN', 'ELEVEN', 'TWELVE', 'THIRTEEN', 'FOURTEEN', 'FIFTEEN', 'SIXTEEN', 'SEVENTEEN', 'EIGHTEEN', 'NINETEEN']
+tens = ['', '', 'TWENTY', 'THIRTY', 'FORTY', 'FIFTY', 'SIXTY', 'SEVENTY', 'EIGHTY', 'NINETY']
+
+while True:
+    n = int(input("Enter a Number: "))
+    if n == 0:
+        print('ZERO')
+    elif n < 20:
+        print(units_and_teen[n])
+    elif n < 100:
+        tend_digit = (n % 100) // 10
+        print(tens[tend_digit], units_and_teen[n%10])
+    elif n < 1000:
+        hund_digit = (n % 1000) // 100
+        tend_digit = (n % 100) // 10
+        if n % 100 == 0:
+            print(units_and_teen[hund_digit], 'HUNDRED')
+        else:
+            if tend_digit == 0:
+                print(units_and_teen[hund_digit], 'HUNDRED', units_and_teen[n%10])
+            else:
+                print(units_and_teen[hund_digit], 'HUNDRED', tens[tend_digit], units_and_teen[n%10])
+    elif n < 10000:
+        thou_digit = (n % 10000) // 1000
+        hund_digit = (n % 1000) // 100
+        tend_digit = (n % 100) // 10
+        if hund_digit == 0:
+            if tend_digit == 0:
+                print(units_and_teen[thou_digit], 'THOUSAND',units_and_teen[n%10])
+            else:
+                print(units_and_teen[thou_digit], 'THOUSAND', tens[tend_digit], units_and_teen[n%10])
+        else:
+            print(units_and_teen[thou_digit], 'THOUSAND', units_and_teen[hund_digit], 'HUNDRED', tens[tend_digit], units_and_teen[n%10])
+    elif n < 100000:
+        tent = (n % 100000) // 10000
+        thou_digit = (n % 10000) // 1000
+        hund_digit = (n % 1000) // 100
+        tend_digit = (n % 100) // 10
+        if thou_digit == 0:
+            if hund_digit == 0:
+                if tend_digit == 0:
+                    print(tens[tent],'THOUSAND', units_and_teen[n%10])
+                else:
+                    print(tens[tent],'THOUSAND',tens[tend_digit], units_and_teen[n%10])
+            else:
+                print(tens[tent],'THOUSAND', units_and_teen[hund_digit], 'HUNDRED', tens[tend_digit], units_and_teen[n%10])
+        else:
+            print(tens[tent],units_and_teen[thou_digit], 'THOUSAND' ,units_and_teen[hund_digit], 'HUNDRED', tens[tend_digit], units_and_teen[n%10])
+    elif n < 1000000:
+        hunthou_digit = (n % 1000000) // 100000
+        tent = (n % 100000) // 10000
+        thou_digit = (n % 10000) // 1000
+        hund_digit = (n % 1000) // 100
+        tend_digit = (n % 100) // 10
+        if tent == 0:
+            if thou_digit == 0:
+                if hund_digit == 0:
+                    if tend_digit == 0:
+                        print(units_and_teen[hunthou_digit], 'HUNDRED','THOUSAND', units_and_teen[n%10])
+                    else:
+                        print(units_and_teen[hunthou_digit], 'HUNDRED','THOUSAND',tens[tend_digit], units_and_teen[n%10])
+                else:
+                    print(units_and_teen[hunthou_digit], 'HUNDRED','THOUSAND', units_and_teen[hund_digit], 'HUNDRED', tens[tend_digit], units_and_teen[n%10])
+            else:
+                print(units_and_teen[hunthou_digit], 'HUNDRED',units_and_teen[thou_digit], 'THOUSAND' ,units_and_teen[hund_digit], 'HUNDRED', tens[tend_digit], units_and_teen[n%10])
+        else:
+            print(units_and_teen[hunthou_digit], 'HUNDRED',tens[tent],units_and_teen[thou_digit], 'THOUSAND' ,units_and_teen[hund_digit], 'HUNDRED', tens[tend_digit], units_and_teen[n%10])
+    elif n == 1000000:
+        print('ONE MILLION')
+    else:
+        print("Enter a number less than 1000000")
